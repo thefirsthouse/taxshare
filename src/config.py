@@ -12,6 +12,9 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    project_name: str = "Taxshare API"
+    project_version: str = "0.1.0-dev"
+
     app_env: str = "development"
     debug: bool = False
 
