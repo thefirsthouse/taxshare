@@ -1,5 +1,5 @@
 import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class LocationSchema(BaseModel):
@@ -19,7 +19,7 @@ class SearchResponse(BaseModel):
     id: int
     start_location: LocationSchema
     end_location: LocationSchema
-    quotes: List[QuoteSchema]
+    quotes: list[QuoteSchema] = Field(default_factory=list)
     created_at: datetime.datetime
     updated_at: datetime.datetime
 
