@@ -1,14 +1,16 @@
 import asyncio
 from collections.abc import AsyncIterator
 
+import httpx
+
 from quotes.providers.mock import MockProvider
 from receiver.schemas import LocationSchema, QuoteSchema
 
 
 class QuoteCollector:
-    def __init__(self):
+    def __init__(self, client: httpx.AsyncClient):
         self.providers = [
-            MockProvider(),
+            MockProvider(client),
         ]
 
     async def collect_quotes(
